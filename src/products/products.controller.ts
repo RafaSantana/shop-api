@@ -1,8 +1,20 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  ParseIntPipe,
+  Query,
+} from '@nestjs/common';
 import { ProductsService } from './products.service';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { Product } from './entities/product.entity';
+import { SearchProductsDto } from './dto/search-products.dto';
+import { PaginatedResponseDto } from './dto/paginated-response.dto';
 
 @Controller('products')
 export class ProductsController {
@@ -16,6 +28,11 @@ export class ProductsController {
   @Get()
   findAll(): Promise<Product[]> {
     return this.productsService.findAll();
+  }
+
+  @Get('search')
+  searchProducts(@Query() searchDto: SearchProductsDto): Promise<PaginatedResponseDto<Product>> {
+    return this.productsService.searchProducts(searchDto);
   }
 
   @Get(':id')
