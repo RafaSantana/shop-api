@@ -23,7 +23,7 @@ import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { Product } from './entities/product.entity';
 import { SearchProductsDto } from './dto/search-products.dto';
-import { PaginatedResponseDto } from './dto/paginated-response.dto';
+import { PaginatedResponseDto } from '../common';
 
 @ApiTags('products')
 @Controller('products')

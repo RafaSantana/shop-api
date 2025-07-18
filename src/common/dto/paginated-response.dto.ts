@@ -1,5 +1,9 @@
 import { ApiProperty } from '@nestjs/swagger';
 
+/**
+ * Metadata for pagination information.
+ * Contains details about the current page, total items, and navigation state.
+ */
 export class PaginationMeta {
   @ApiProperty({ description: 'Total de itens encontrados', example: 150 })
   total: number;
@@ -20,6 +24,12 @@ export class PaginationMeta {
   hasPreviousPage: boolean;
 }
 
+/**
+ * Generic interface for paginated responses.
+ * Can be used across different modules for consistent pagination structure.
+ *
+ * @template T - The type of data being paginated
+ */
 export interface PaginatedResponseDto<T> {
   data: T[];
   meta: PaginationMeta;
